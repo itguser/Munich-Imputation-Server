@@ -8,3 +8,13 @@ Michigan Imputation Server consists of several parallelized pipeline steps:
 * QC Report
 * Phasing and Imputation
 * Compression and Encryption
+
+# Contributors
+
+* Dr. William Ryner
+* Hariharan Sethuraman
+* Leslie Glass
+* Lukas Forer
+* Sebastian Schönherr
+* Sayantan Das
+* Christian Fuchsberger
