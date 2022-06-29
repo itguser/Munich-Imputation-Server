@@ -1,0 +1,165 @@
+<html>
+<head>
+<style>
+
+.col-md-3 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: inline-block;
+  color: white;
+  justify-content: center;
+  flex-direction: row;
+  align-item: center;
+}
+
+.block {
+  background-color: White;
+  white-space: nowrap;
+  display: inline-block;
+  color: black;
+  border: 2px solid black;
+  margin: 5px;
+  padding: .5em;
+  justify-content: center;
+  align-item: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.horizontalBlocks {
+  white-space: nowrap;
+  margin: 5px;
+  padding: .5em;
+  justify-content: flex-end;
+  display: inline-block;
+  align-item: center;
+  width: 280px;
+  flex-direction: row;
+  border: 2px solid black;
+}
+
+.horizontalBlocks2 {
+  white-space: nowrap;
+  margin: 5px;
+  padding: .5em;
+  justify-ccontent: center;
+  display: inline-block;
+  align-item: center;
+  width: 200px;
+  flex-direction: row;
+  border: 2px solid black;
+}
+
+.first-three {
+  margin-bottom: 50px;
+}
+
+.second-three {
+  margin-bottom: 50px;
+}
+ 
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+</style>
+</head>
+
+<div class="jumbotron jumbotron-fluid bg-danger text-white">
+  <div class="container">
+    <h1>Munich Imputation Server</h1>
+    <p>Free Next-Generation Imputation Service</p>
+    <h2>Empowered by Helmholtz Zentrum Munich</h2>
+    {{#is(loggedIn, true)}}
+      <p><b>Welcome to Munich Imputation Server empowered by Helmholtz Zentrum Munich</b></p>
+    {{else}}
+      <p>
+        <a class="btn btn-lg btn-success" href="#!pages/login">Login</a>&nbsp;
+        <a class="btn btn-lg btn-danger" href="#!pages/register">Sign up now</a>
+      </p>
+    {{/is}}
+  </div>
+
+  <div class="container">
+     <div class="col-md-3 text-center">
+       <p>
+         <span class="lead" style="font-size: 200%;">0</span>
+         <br>
+         Imputed Genomes      
+       </p>
+     </div>
+
+     <div class="col-md-3 text-center">
+       <p>
+         <span class="lead" style="font-size: 200%;">1</span>
+         <br>
+         Registered Users
+       </p>
+     </div>
+
+     <div class="col-md-3 text-center">
+       <p>
+         <span class="lead" style="font-size: 200%;">0</span>
+         <br>
+         Running Jobs
+       </p>
+     </div>
+  </div>   
+</div>
+
+
+<div class="container">
+   <div class="first-three">
+     <h2><b>The easiest way to impute genotyopes</b></h2>
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/up-cloud.png" width="80" height="80">
+         <p><b>Upload your genotypes</b> to our<br>server loacted in Munich. All<br>interactions with the server are<br>secured</p>
+       </div>
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/impute.png" width="80" height="80">
+         <p><b>Choose a reference panel.</b> We<br>will take care of pre-phasing and<br>imputation</p>
+       </div>  
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/down-cloud.png" width="80" height="80">
+         <p><b>Donwload the results.</b> All<br>results are encrypted with a one-time<br>password. After 7 days, all<br>results are deleted from our server</p>
+       </div>
+   </div>
+
+
+
+
+   <div class="second-three">
+     <h2><b>Wide-range of reference panels supported</b></h2>
+       <div class="horizontalBlocks2">
+         <p>HapMap<br>Release 2</p>
+       </div>
+       <div class="horizontalBlocks2">
+         <p>1000 Genomes<br>Phase 3</p>
+       </div>
+       <div class="horizontalBlocks2">
+         <p>Haplotype<br>Reference Consortium</p>
+       </div>
+   </div>
+
+
+
+
+   <div class="third-three">
+     <h2><b>Build your own Imputation Server</b></h2>
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/github" width="80" height="80">
+         <p>Imputation server is open spurce<br>and easy to installon your own<br><b>Hadoop cluster</b> or use Docker</p>
+       </div>
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/secure.png" width="80" height="80">
+         <p>Host your own confifential<br>reference panels in a <b>secure</b> and<br><b>private<b> environment.</p>
+       </div>
+       <div class="horizontalBlocks">
+         <img src="https://imputationserver.sph.umich.edu/static/images/control.png" width="80" height="80">
+         <p>You have <b>full control</b> about the<br>service. Write us to get more<br>information</p>
+       </div>
+   </div>
+</div>
+</html>
