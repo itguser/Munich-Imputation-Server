@@ -1,0 +1,55 @@
+<html>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 40%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+        
+        p.ridge {
+                border-style: ridge;
+                border-width: 1px;
+                background-color: lightgrey;
+                width: 550px;
+                }
+    </style>
+
+<h3>Phasing</h3>
+<li>Execute for each chunk one of the following phasing algorithms (we use an overlap of 5 Mb). For example, chr20:1-20000000 and reference population EUR:</li>
+
+<h4>Eagle2</h4>
+<p class="ridge">/eagle --vcfRef HRC.r1-1.GRCh37.chr20.shapeit3.mac5.aa.genotypes.bcf
+--vcfTarget chunk_20_0000000001_0020000000.vcf.gz  --geneticMapFile genetic_map_chr20_combined_b37.txt
+--outPrefix chunk_20_0000000001_0020000000.phased --bpStart 1 --bpEnd 25000000 --allowRefAltSwap
+--vcfOutFormat z</p>
+<br> <br>
+
+<b>Please note:</b> Target-only sites for unphased data are not included in the final output.
+
+<h3>Imputation</h3>
+<li>Execute for each chunk minimac in order to impute the phased data (we use a window of 500 kb):</li><br>
+
+<p class="ridge">/Minimac4 --refHaps HRC.r1-1.GRCh37.chr1.shapeit3.mac5.aa.genotypes.m3vcf.gz
+--haps chunk_1_0000000001_0020000000.phased.vcf --start 1 --end 20000000
+--window 500000 --prefix chunk_1_0000000001_0020000000 --cpus 1 --chr 20 --noPhoneHome
+--format GT,DS,GP --allTypedSites --meta --minRatio 0.00001</p>
+<br> 
+
+If a map file is available (currently TOPMed only), the following cmd is executed:<br> <br>
+
+<p class="ridge">/Minimac4 --refHaps HRC.r1-1.GRCh38.chr1.shapeit3.mac5.aa.genotypes.m3vcf.gz
+--haps chunk_1_0000000001_0020000000.phased.vcf --start 1 --end 20000000
+--window 500000 --prefix chunk_1_0000000001_0020000000 --cpus 1 --chr 20 --noPhoneHome
+--format GT,DS,GP --allTypedSites --meta --minRatio 0.00001 --referenceEstimates --map B38_MAP_FILE.map</p>
+   
+
+
+</html>

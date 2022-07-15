@@ -1,0 +1,34 @@
+<html>
+    <style>
+        p.ridge {
+            border-style: ridge;
+            border-width: 1px;
+            background-color: lightgrey;
+            width: 650px;
+            }
+    </style>
+    
+    <h3>Quality Control for HRC, 1000G and CAAPA imputation</h3>
+    Will Rayner provides a great toolbox to prepare data: <a href="https://www.well.ox.ac.uk/~wrayner/tools/" style="text-decoration: none">HRC or 1000G Pre-imputation Checks.</a>
+    <br><br>
+    The main steps for HRC are:
+    
+    <h3>Download tool and sites</h3>
+    <p class="ridge">wget http://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.2.7.zip<br>
+    wget ftp://ngs.sanger.ac.uk/production/hrc/HRC.r1-1/HRC.r1-1.GRCh37.wgs.mac5.sites.tab.gz</p>
+    
+    <h3>Convert ped/map to bed</h3>
+    <p class="ridge">plink --file (input-file) --make-bed --out (output-file)</p>
+    
+    <h3>Create a frequency file</h3>
+    <p class="ridge">plink --freq --bfile (input) --out (freq-file)</p>
+    
+    
+    <h3>Execute script</h3>
+    <p class="ridge">perl HRC-1000G-check-bim.pl -b (bim file) -f (freq-file) -r HRC.r1-1.GRCh37.wgs.mac5.sites.tab -h
+    sh Run-plink.sh</p>
+    
+    <h3>Create vcf using <a href="https://genome.sph.umich.edu/wiki/VcfCooker" style="text-decoration: none">VcfCooker</a></h3>
+    <p class="ridge">vcfCooker --in-bfile (bim file) --ref (reference.fasta)  --out (output-vcf) --write-vcf
+    bgzip (output-vcf)</p>
+</html>

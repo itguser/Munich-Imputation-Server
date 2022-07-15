@@ -1,0 +1,122 @@
+<html>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 40%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+        </style>
+
+    <h2>Setup your first imputation job</h2>
+    <p>Please <a href="http://146.107.169.108:8082/index.html#!pages/login" style="text-decoration: none">login</a> with your credentials and click on the <b>Run</b> tab to start a new imputation job. The submission dialog allows you to specify the properties of your imputation job.</p>
+    
+    <img src="run_job_screenshot.png" class="img-rounded" width="900px">
+    
+    <p>The following options are available:</p>
+
+    <h3>Reference Panel</h3>
+    <p>Our server offers genotype imputation from different reference panels. The most accurate and largest panel is <b>HRC (Version r1.1 2016)</b>. Please select one that fulfills your needs and supports the population of your input data:
+       
+    <ul>
+       <li>HRC (Version r1.1 2016)</li>
+       <li>HLA Imputation Panel: two-field (four-digit) and G-group resolution</li>
+       <li>HRC (Version r1 2015)</li>
+       <li>1000 Genomes Phase 3 (Version 5)</li>
+       <li>HapMap 2</li>
+    </ul>
+       
+       <p>More details about all available reference panels can be found here.</p>
+
+       <h3>Input files</h3>
+       <p>VCF files can be uploaded either from your local disk or by specifying a remote sftp / HTTPS location. In both cases, several files or several locations can be selected at once. Please make sure that all files fulfill the requirements.</p>
+       <h3>Upload VCF files from your computer</h3>
+       <p>When using the file upload, data is uploaded from your local file system to Michigan Imputation Server. By clicking on <b>Select Files</b> an open dialog appears where you can select your VCF files:</p>
+       <h3>Import VCF files via SFTP</h3>
+       <p>An other convenient way to use your data is by importing it directly from a remote SSH server. This can be achieved by selecting <b>Secure File Transfer Protocol (SFTP)</b>.<br><br>
+
+       After clicking on the <b>Import Files</b> button, a new dialog appears where you can enter your SFTP credentials and the URLs of your files or folders. A URL consists of the server address followed by the full Unix path. A path can be either point to a folder or to a file. Several paths can be specified in consecutive lines.</p>
+       
+       <img src="sftp_screenshot.png" class="img-rounded" width="900px">
+
+       <h3>Import VCF files via HTTPS</h3>
+       <p>Data can also be imported by using HTTP(S) link. This can be achieved by selecting <b>URLs (HTTP)</b>.</p>
+       <p>After clicking on the Add URLs button, a new dialog appears where you can add the links.</p>
+
+       <h3>Build</h3>
+       <p>Please select the build of your data. Currently the options <b>hg19</b> and <b>hg38</b> are supported. Michigan Imputation Server automatically updates the genome positions (liftOver) of your data. All reference panels except TOPMed are based on hg19 coordinates.         </p>
+    
+        <h3>rsq Filter</h3>
+        <p>To minimize the file size, Michigan Imputation Server includes a r2 filter option, excluding all imputed SNPs with a r2-value (= imputation quality) smaller then the specified value.</p>
+
+       <h3>Phasing</h3>
+       <p>If your uploaded data is <i>unphased,</i> Eagle v2.4 will be used for phasing. In case your uploaded VCF file already contains phased genotypes, please select the "No phasing" option.</p>
+       
+       <table border="1" cellpadding="1" cellspacing="0">
+          <tr>
+             <th>Algorithm</th>
+             <th>Description</th>
+          </tr>
+          <tr>
+             <td>Eagle v2.4</td>
+             <td>The <a href="https://alkesgroup.broadinstitute.org/Eagle/" style="text-decoration: none">Eagle</a> algorithm estimates haplotype phase using the HRC reference panel. This method is also suitable for single sample imputation. After phasing or imputation you will receive phased genotypes in your VCF files.</td>
+          </tr>
+       </table>
+       
+       <h3>Population</h3>
+       <p>Please select the population of your uploaded samples. This information is used to compare the allele frequencies between your data and the reference panel. Please note that not every reference panel supports all sub-populations.</p>
+
+       <table border="1" cellpadding="1" cellspacing="0">
+          <tr>
+             <th>Population</th>
+             <th>Supported Reference Panels</th>
+          </tr>
+          <tr>
+             <td>AFR</td>
+             <td>all</td>
+          </tr>
+          <tr>
+             <td>AMR</td>
+             <td>all</td>
+          </tr>
+          <tr>
+             <td>EUR</td>
+             <td>all</td>
+          </tr>
+          <tr>
+             <td>Mixed</td>
+             <td>all</td>
+          </tr>
+          <tr>
+             <td>AA</td>
+             <td>CAAPA</td>
+          </tr>
+          <tr>
+             <td>ASN</td>
+             <td>1000 Genomes Phase 1 (Version3)</td>
+          </tr>
+          <tr>
+             <td>EAS</td>
+             <td>1000 Genomes Phase 3 (Version5)</td>
+          </tr>
+          <tr>
+             <td>SAS</td>
+             <td>1000 Genomes Phase 3 (Version5)</td>
+          </tr>
+       </table>
+       <p>In case your population is not listed or your samples are from different populations, please select <b>Mixed</b> to skip the allele frequency check. For mixed populations, no QC-Report will be created.</p>
+       
+       <h3>Mode</h3>
+       <p>Please select if you want to run <b>Quality Control & Imputation, Quality Control & Phasing Only</b> or <b> Control Only</b>.</p>
+    
+       <h3>AES 256 encryption</h3>
+       <p>All Imputation Server results are encrypted by default. Please tick this checkbox if you want to use AES 256 encryption instead of the default encryption method. Please note that AES encryption does not work with standard unzip programs. We recommend to use 7z instead.</p>
+    
+</html>

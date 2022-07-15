@@ -1,0 +1,41 @@
+<html>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 40%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+        
+        p.ridge {
+                border-style: ridge;
+                border-width: 1px;
+                background-color: lightgrey;
+                width: 550px;
+                }
+    </style>
+
+<h3>Compression and Encryption</h3>
+<ul>
+    <li>Merge all chunks of one chromosome into one single vcf.gz</li>
+    <li>Encrypt data with one-time password</li>
+</ul>
+
+<h3>Chromosome X Pipeline</h3>
+Additionally to the standard QC, the following per-sample checks are executed for chrX:
+
+<ul>
+    <li>Ploidy Check: Verifies if all variants in the nonPAR region are either haploid or diploid.</li>
+    <li>Mixed Genotypes Check: Verifies if the amount of mixed genotypes (e.g. 1/.) is < 10 %.</li>
+</ul>
+
+For phasing and imputation, chrX is split into three independent chunks (PAR1, nonPAR, PAR2). These splits are then automatically merged by Michigan Imputation Server and are returned as one complete chromosome X file. Only Eagle is supported.
+
+</html>

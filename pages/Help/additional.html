@@ -1,0 +1,29 @@
+<html>
+    <style>
+        p.ridge {
+            border-style: ridge;
+            border-width: 1px;
+            background-color: lightgrey;
+            width: 650px;
+            }
+    </style>
+
+<h2>Additional Tools</h2>
+
+<h3>Convert ped/map files to VCF files</h3>
+
+Several tools are available: <a href="https://www.cog-genomics.org/plink2/" style="text-decoration: none">plink2,</a> <a href="https://samtools.github.io/bcftools/" style="text-decoration: none">BCFtools</a> or <a href="https://genome.sph.umich.edu/wiki/VcfCooker" style="text-decoration: none">VcfCooker.</a>
+
+<p class="ridge">plink --ped study_chr1.ped --map study_chr1.map --recode vcf --out study_chr1</p>
+
+Create a sorted vcf.gz file using <a href="https://samtools.github.io/bcftools/" style="text-decoration: none">BCFtools:</a><br> <br>
+
+<p class="ridge">bcftools sort study_chr1.vcf -Oz -o study_chr1.vcf.gz</p>
+
+<h3>CheckVCF</h3>
+
+Use <a href="https://github.com/zhanxw/checkVCF" style="text-decoration: none">checkVCF</a> to ensure that the VCF files are valid. checkVCF proposes "Action Items" (e.g. upload to sftp server), which can be ignored. Only the validity should be checked with this command.<br> <br>
+
+<p class="ridge">checkVCF.py -r human_g1k_v37.fasta -o out mystudy_chr1.vcf.gz</p>
+
+</html>

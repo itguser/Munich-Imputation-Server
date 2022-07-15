@@ -1,0 +1,60 @@
+<html>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 40%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+    </style>
+
+    
+    
+<h2>Start your imputation job</h2>
+<p>After confirming our Terms of Service, the imputation process can be started immediately by clicking on <b>Start Imputation</b>. Input Validation and Quality Control are executed immediately to give you feedback about the data-format and its quality. If your data passed this steps, your job is added to our imputation queue and will be processed as soon as possible. You can check the position in the queue on the job summary page.</p>
+
+<p>We notify you by email as soon as the job is finished or your data don't pass the Quality Control steps.</p>
+
+<h3>Input Validation</h3>
+<p>In a first step we check if your uploaded files are valid and we calculate some basic statistics such as amount of samples, chromosomes and SNPs.</p>
+
+<p>After Input Validation has finished, basic statistics can be viewed directly in the web interface.</p>
+
+<p>If you encounter problems with your data please read this tutorial about Data Preparation to ensure your data is in the correct format.</p>
+
+<h3>Quality Control</h3>
+<p>In this step we check each variant and exclude it in case of:</p>
+
+<ol>
+   <li>contains invalid alleles</li>
+   <li>duplicates</li>
+   <li>indels</li>
+   <li>monomorphic sites</li>
+   <li>allele mismatch between reference panel and uploaded data</li>
+   <li>SNP call rate < 90%</li>
+</ol>
+
+<p>All filtered variants are listed in a file called statistics.txt which can be downloaded by clicking on the provided link. More informations about our QC pipeline can be found here.</p>
+
+<p>If you selected a population, we compare the allele frequencies of the uploaded data with those from the reference panel. The result of this check is available in the QC report and can be downloaded by clicking on qcreport.html.</p>
+
+<h3>Pre-phasing and Imputation</h3>
+<p>Imputation is achieved with Minimac4. The progress of all uploaded chromosomes is updated in real time and visualized with different colors.</p>
+
+<img src="Pre-phasing_imputation.png" class="img-rounded" width="900px">>
+
+<h3>Data Compression and Encryption</h3>
+<p>If imputation was successful, we compress and encrypt your data and send you a random password via mail.</p>
+
+<img src="data_compression_encryption.png" class="img-rounded" width="900px">
+
+<p>This password is not stored on our server at any time. Therefore, if you lost the password, there is no way to resend it to you.</p>
+
+</html>
